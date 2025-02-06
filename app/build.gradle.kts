@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.daggerHiltAndroid)
+    alias(libs.plugins.jetbrainsKotlinSerialization)
+    id("kotlin-kapt")
 }
 
 android {
@@ -56,4 +59,41 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+
+    // Navigation
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
+
+    // Room
+    implementation(libs.androidx.room.ktx)
+    androidTestImplementation(project(":app"))
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.paging)
+
+    // Coroutines
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+
+    // Lifecycle ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
+    // Dagger - Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    kapt(libs.androidx.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.okhttp)
+    implementation(libs.converter.gson)
+    implementation(libs.converter.scalars)
+    implementation(libs.logging.interceptor)
+
+    // Coil
+    implementation(libs.coil.compose)
+
+    // Extended Icons
+    implementation(libs.androidx.material.icons.extended)
 }
